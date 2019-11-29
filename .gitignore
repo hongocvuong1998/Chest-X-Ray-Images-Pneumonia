@@ -1,0 +1,5 @@
+*.wav
+*.png
+*.zip
+./Model_logs/*
+*.jpeg
