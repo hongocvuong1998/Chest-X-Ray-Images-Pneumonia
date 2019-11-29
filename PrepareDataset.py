@@ -29,6 +29,18 @@ class PreprocessedDataset(chainer.dataset.DatasetMixin):
 
     def __len__(self):
         return len(self.base)
+    
+    def conver_to_3chanel(self,img):
+        if img.ndim == 2:
+            img_3chanel = np.zeros((img.shape[0], img.shape[1], 3))
+
+            """Add the channels to the needed image one by one"""
+            img_3chanel[:,:,0] = img
+            img_3chanel[:,:,1] = img
+            img_3chanel[:,:,2] = img
+            return img_3chanel
+        return img
+
 
     def get_example(self, i):  #    Train on image chanel=1
        
@@ -37,7 +49,8 @@ class PreprocessedDataset(chainer.dataset.DatasetMixin):
         image=np.rollaxis(image, 0, 3)
         image = image[...,::-1] #BGR to RGB
         image = cv2.resize(image,(224, 224))  #(width,height)
-        image = image.reshape(1,224,224)
+        image = self.conver_to_3chanel(image)
+        image=np.rollaxis(image, 2, -3) # input model chanel-height-width   ``
         image *= (1.0 / 255.0) # Scale to [0, 1]
         image=np.asarray(image,dtype=np.float32)
         return image, label
