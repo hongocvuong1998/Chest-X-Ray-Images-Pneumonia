@@ -1,8 +1,12 @@
 *.wav
 *.png
 *.zip
-./Model_logs/*
+Model_logs/
+Model_logs/**
 *.jpeg
-./chest-xray-pneumonia/*
-./chest-xray-pneumonia_v1/*
-./fast_ai/*
+chest-xray-pneumonia/
+chest-xray-pneumonia_v1/
+chest-xray-pneumonia/**
+chest-xray-pneumonia_v1/**
+fast_ai/
+fast_ai/**
