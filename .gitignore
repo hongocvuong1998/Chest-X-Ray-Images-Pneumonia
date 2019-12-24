@@ -3,3 +3,6 @@
 *.zip
 ./Model_logs/*
 *.jpeg
+./chest-xray-pneumonia/*
+./chest-xray-pneumonia_v1/*
+./fast_ai/*
